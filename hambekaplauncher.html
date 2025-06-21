@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Don't Leave 😈</title>
+  <script>
+    // Folyamatos tab nyitás (korlátozott böngészővédelmek miatt nem működik mindig)
+    let openTabs = () => {
+      for (let i = 0; i < 3; i++) {
+        let newWin = window.open(window.location.href, '_blank');
+        if (newWin) newWin.blur(); // néha segít elkerülni blokkolást
+      }
+    };
+
+    // Végtelen alert
+    function annoyingAlerts() {
+      setInterval(() => {
+        alert("ARE YOU HAVING FUN YET?");
+      }, 4000);
+    }
+
+    // Elhagyás figyelmeztető
+    window.onbeforeunload = function () {
+      return "WAIT! You can't leave!";
+    };
+
+    // Jobbklikk tiltása
+    window.oncontextmenu = function () {
+      alert("No right click!");
+      return false;
+    };
+
+    // Idegesítő hang
+    function playAudio() {
+      let audio = new Audio("https://actions.google.com/sounds/v1/alarms/beep_short.ogg");
+      audio.loop = true;
+      audio.play().catch(() => {
+        console.log("Autoplay blocked.");
+      });
+    }
+
+    // Folyamatos title változás
+    function changeTitle() {
+      let titles = ["Don't Leave 😈", "Still Here?", "Annoyed Yet?", "Why Not Close?"];
+      let i = 0;
+      setInterval(() => {
+        document.title = titles[i % titles.length];
+        i++;
+      }, 1000);
+    }
+
+    // Init
+    window.onload = () => {
+      openTabs();
+      annoyingAlerts();
+      playAudio();
+      changeTitle();
+    };
+  </script>
+</head>
+<body>
+  <h1 style="font-size:3em; text-align:center;">😈 Welcome to the most annoying site 😈</h1>
+  <p style="text-align:center;">Try to close me... I dare you.</p>
+</body>
+</html>
